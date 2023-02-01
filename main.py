@@ -75,7 +75,6 @@ for i, pitch in enumerate(array_of_note_numbers):
 with open("input.mid", "wb") as output_file:
     MyMIDI.writeFile(output_file)
 
-
 '''
 Converts .midi file to .wav
 '''
