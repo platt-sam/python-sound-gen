@@ -1,6 +1,5 @@
 from midiutil import MIDIFile
 from mingus.core import chords
-from midi2audio import FluidSynth # did not work bc of FluitSynth files for some reason???
 
 '''
 Example code from https://medium.com/@stevehiehn/how-to-generate-music-with-python-the-basics-62e8ea9b99a5
@@ -15,7 +14,6 @@ NOTES_IN_OCTAVE = len(NOTES)
 errors = {
     'notes': 'Bad input, please refer this spec-\n'
 }
-
 
 def swap_accidentals(note):
     if note == 'Db':
@@ -65,19 +63,16 @@ duration = 1  # In beats
 tempo = 120  # In BPM
 volume = 100  # 0-127, as per the MIDI standard
 
-MyMIDI = MIDIFile(1)  # One track, defaults to format 1 (tempo track is created
-# automatically)
+MyMIDI = MIDIFile(1)  # One track, defaults to format 1 (tempo track is created automatically)
 MyMIDI.addTempo(track, time, tempo)
 
 for i, pitch in enumerate(array_of_note_numbers):
     MyMIDI.addNote(track, channel, pitch, time + (i*4), duration, volume)
 
-with open("input.mid", "wb") as output_file:
+with open("temp.mid", "wb") as output_file:
     MyMIDI.writeFile(output_file)
 
 '''
-Converts .midi file to .wav
+Convert .midi file to some other format
 '''
 
-fs = FluidSynth()
-fs.midi_to_audio('input.mid', 'output.wav')
